@@ -1,16 +1,3 @@
-.warna-tulisan {
-    color: blue;
-    background: red;
-}
-
-.ukuran-tulisan {
-	font-size: 100px;
-}
-
-.h-50 {
-	height: 400px !important;
-}
-
-.margin-card {
-	margin-top: 50px;
+html, body {
+	background: rgb(32, 32, 32);
 }

@@ -5,9 +5,75 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: rgb(36, 36, 36)
+}
+
+html {
+  background: rgb(36, 36, 36);
+  color: white;
+}
+
+#root {
+  background: rgb(36, 36, 36);
+  color: white;
+}
+
+td {
+  color: white;
+}
+
+th {
+  color: white;
+}
+
+table {
+   color: white;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.center {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.center form {
+   width: 100%;
+   padding: 100px 600px;
+}
+
+.center input {
+   width: 100%;
+   padding: 10px;
+   outline: none;
+   border: 2px solid #242424;
+   border-radius: 10px;
+   font-weight: bold;
+   background: rgb(24, 24, 24);
+   color: white;
+}
+
+.center input:focus {
+   border: 2px solid rgb(105, 225, 255);
+}
+
+.btn-update {
+  background: rgb(15, 154, 50);
+  padding: 8px 18px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
 }
