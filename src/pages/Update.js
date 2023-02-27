@@ -1,7 +1,7 @@
 
 import React from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, redirect, useNavigate } from 'react-router-dom';
 
 // Route::put('/update-user/{id}', [UserController::class, 'updateUser']);
 
@@ -14,6 +14,7 @@ function Update() {
     const [password, setPassword] = React.useState();
 
     const { id } = useParams();
+    let navigate = useNavigate();
 
     React.useEffect(() => {
         getDetailUser();
@@ -22,12 +23,27 @@ function Update() {
     const getDetailUser = () => {
         axios.get('http://127.0.0.1:8000/api/detail-user/' + id).then(function (response) {
             
-            setName(response.data.name)
-            setEmail(response.data.email)
-            setPassword(response.data.password)
+            setName(response.data.name);
+            setEmail(response.data.email);
+            setPassword(response.data.password);
 
         }).catch(function (error) {
+        }).finally(function () {
             
+        });
+    }
+
+    const updateUser = (e) => {
+        e.preventDefault();
+        axios.post('http://127.0.0.1:8000/api/update-user/' + id, {
+            name: name,
+            email: email,
+            password: password,
+        }).then(function (response) {
+            return navigate("/");
+            
+        }).catch(function (error) {
+
         }).finally(function () {
 
         });
@@ -35,7 +51,7 @@ function Update() {
 
     return (
         <div className="center">
-            <form action="">
+            <form onSubmit={updateUser} action="">
                 <div className="mb-4">
                     <label className='pb-2 fw-bold'>Nama</label><br/>
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)} />

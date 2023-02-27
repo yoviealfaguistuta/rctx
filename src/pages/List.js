@@ -24,6 +24,16 @@ function List() {
 			});
 	}
 
+	const deleteUser = (id) => {
+		axios.delete('http://127.0.0.1:8000/api/delete-user/' + id).then(function (response) {
+				getUser();
+		}).catch(function (error) {
+
+		}).finally(function () {
+
+		});
+	}
+
 	return (
 		<Container className='mt-5'>
 			<div className="container-header-content">
@@ -32,9 +42,9 @@ function List() {
 					<p>Ini adalah user yang terdaftar di sistem.</p>
 				</div>
 
-				<Button variant='success'>Tambah</Button>
+				<Link to={'/create'} className='btn btn-success' variant='success'>Tambah</Link>
 			</div>
-			<Table bordered hover>
+			<Table bordered>
 				<thead>
 					<tr>
 						<th>#</th>
@@ -54,11 +64,11 @@ function List() {
 									<td>{index + 1}</td>
 									<td>{item.id}</td>
 									<td>{item.name}</td>
-									<td>{item.username}</td>
+									<td>{item.email}</td>
 									<td>{item.password}</td>
 									<td>
-										<Link to={'/update/' + item.id} className='me-2'>Perbarui</Link>
-										<Button variant="danger">Hapus</Button>
+										<Link to={'/update/' + item.id} className='btn btn-primary me-2'>Perbarui</Link>
+										<Button onClick={() => deleteUser(item.id)} variant="danger">Hapus</Button>
 									</td>
 								</tr>
 							)
